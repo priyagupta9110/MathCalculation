@@ -2,8 +2,8 @@ var express = require('express');
 var app = express();
 var fs = require("fs");
 
-app.get('/calculateMultiples:limit', function (req, res) {
-   fs.readFile( __dirname + "/" + "calculateMultiples.js", 'utf8', function (err, data) {
+app.get('/calculateMultiples', function (req, res) {
+   fs.readFile( __dirname + "/" + "calculateMultiples.json", 'utf8', function (err, data) {
        console.log( data );
        res.end( data );
    });
