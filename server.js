@@ -1,19 +1,14 @@
-var express = require('express');
-var app = express();
-var fs = require("fs");
+// server.js
 
-app.get('/calculateMultiples', function (req, res) {
-   fs.readFile( __dirname + "/" + "calculateMultiples.json", 'utf8', function (err, data) {
-       console.log( data );
-       res.end( data );
-   });
-})
+const express        = require('express');
+const MongoClient    = require('mongodb').MongoClient;
+const bodyParser     = require('body-parser');
 
-var server = app.listen(8081, function () {
+const app            = express();
 
-  var host = server.address().address
-  var port = server.address().port
+const port = 8000;
 
-  console.log("Example app listening at http://%s:%s", host, port)
-
-})
+require('./app/routes')(app, {});
+app.listen(port, () => {
+  console.log('We are live on ' + port);
+});
